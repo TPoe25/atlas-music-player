@@ -17,7 +17,7 @@ export default function MusicPlayer() {
         <PlayListItem />
         <VolumeControls />
       </div>
-      <div className="PlayList-Big w-[427px] h-[640px] top-[68px] left-[1908px] border-[1px] border-color-[#D5D7D88B] bg-zinc-800 p-4 overflow-y-auto">
+    <div className="PlayList-Big w-[427px] h-[640px] top-[68px] left-[1908px] border-[1px] border-color-[#D5D7D88B] bg-zinc-800 p-4 overflow-y-auto">
         <PlayListItem />
         <PlayListItem />
         <PlayListItem />
