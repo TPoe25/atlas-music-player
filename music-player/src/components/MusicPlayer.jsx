@@ -1,33 +1,22 @@
-// music-player/src/components/MusicPlayer.jsx
-
-import PlayControls from "./PlayControls";
-import PlayListItem from "./PlayListItem";
-import SongTitle from "./SongTitle";
-import VolumeControls from "./VolumeControls";
-import CoverArt from "./CoverArt";
+import CurrentlyPlaying from "./CurrentlyPlaying";
+import Playlist from './Playlist';
 
 export default function MusicPlayer() {
   return (
-    <div className="Music-Player-Big w-[896px] h-[640px] top-[-637px] left-[1460px] m-8">
-      <div className="Currently-Playing-Big w-[400px] h-[576px] top-[500px] left-[1493px] border-[1px] border-#D5D7D88B bg-zinc-900 flex flex-col items-center p-4 gap-4">
-      <div className="CurrentlyPlaying" />
-        <SongTitle />
-        <CoverArt width={400} height={400} top={-606} left={14923} />
-        <PlayControls />
-        <PlayListItem />
-        <VolumeControls />
-      </div>
-    <div className="PlayList-Big w-[427px] h-[640px] top-[68px] left-[1908px] border-[1px] border-color-[#D5D7D88B] bg-zinc-800 p-4 overflow-y-auto">
-        <PlayListItem />
-        <PlayListItem />
-        <PlayListItem />
-        <PlayListItem />
-        <PlayListItem />
-        <PlayListItem />
-        <PlayListItem />
-        <PlayListItem />
-        <PlayListItem />
-        <PlayListItem />
+    <div className="w-full flex justify-center">
+      <div className="w-full max-w-[896px] rounded-lg bg-white text-black shadow-[0px_4px_4px_0px_rgba(213,215,216,0.25)]">
+        {/* Small screens: stacked | Medium+: two columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          {/* Left panel */}
+          <div className="p-8">
+            <CurrentlyPlaying />
+          </div>
+
+          {/* Right panel + divider */}
+          <div className="border-t border-zinc-300/50 p-8 md:border-t-0 md:border-l">
+            <Playlist />
+          </div>
+        </div>
       </div>
     </div>
   );

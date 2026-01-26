@@ -1,3 +1,12 @@
 export default function SongTitle() {
-    return <img src="https://raw.githubusercontent.com/jjswanky/atlas-music-player/main/images/song-title.png" width="500px" />;
+    return (
+        <div className="text-center">
+            <h2 className="text-lg font-semibold text-white">
+                Song Title
+            </h2>
+            <p className="text-sm text-zinc-400">
+                Artist - Album
+            </p>
+        </div>
+    );
 }

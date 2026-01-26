@@ -1,3 +1,10 @@
 export default function VolumeControls() {
-    return <img src="https://raw.githubusercontent.com/jjswanky/atlas-music-player/main/images/volume-control.png" width="500px" />;
+    return (
+        <input
+            type="range"
+            className="w-full accent-white"
+            min="0"
+            max="100"
+        />
+    );
 }

@@ -1,7 +1,13 @@
+import placeholder from '../assets/placeholder.svg';
+
 export default function CoverArt() {
   return (
-    <div className="w-[896px] h-[640px] bg-zinc-900 text-white p-4 shadow-lg flex flex-col items-center">
-      <img src="https://raw.githubusercontent.com/jjswanky/atlas-music-player/main/images/cover-art.png" width="200px" />
+    <div className="aspect-square w-full max-w-[280px] overflow-hidden rounded-2xl bg-zinc-800 ring-1 ring-white/10">
+      <img
+        src={placeholder}
+        alt="Cover Art"
+        className="h-full w-full object-cover"
+      />
     </div>
   );
 }
