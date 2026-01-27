@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+@theme {
+  --color-niners-red: #aa0000;
+  --color-niners-gold: #b3995d;
+  --color-niners-black: #111111;
+  --color-niners-cream: #f7f4ee;
+}
+
 html,
 body,
 #root {

@@ -1,6 +1,5 @@
 import Footer from "./Footer";
 import MusicPlayer from "./MusicPlayer";
-import CoverArt from "./CoverArt";
 
 function App() {
   return (
