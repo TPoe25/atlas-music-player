@@ -7,6 +7,7 @@ import SongTitle from "./SongTitle";
 import PlayControls from "./PlayControls";
 import VolumeControls from "./VolumeControls";
 import Playlist from "./Playlist";
+import AudioPlayer from "./AudioPlayer";
 
 export default function MusicPlayer() {
   const [playlist, setPlaylist] = useState<PlaylistSong[]>([]);
@@ -128,6 +129,13 @@ export default function MusicPlayer() {
 
       <Playlist songs={playlist} currentSongId={currentSongId} onSelect={setCurrentSongId} />
 
+      <AudioPlayer
+        src={currentSong.song}
+        isPlaying={isPlaying}
+        volume={volume}
+        speed={speed}
+        onEnded={nextSong}
+      />
     </div>
   );
 }
