@@ -9,7 +9,7 @@ type Props = {
 
 export default function Playlist({ songs, currentSongId, onSelect }: Props) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col pr-8">
       {songs.map((song) => (
         <PlayListItem
           key={song.id}

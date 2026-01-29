@@ -105,11 +105,8 @@ export default function MusicPlayer() {
 
   return (
     <div className="w-full px-4 py-8">
-      {/* Mobile: ~456px. Desktop: ~896px */}
       <div className="mx-auto w-full max-w-[456px] lg:max-w-[896px]">
-        {/* Outer card */}
-        <div className="bg-niners-gold/25 dark:bg-niners-night rounded-sm">
-          {/* Two fixed columns on desktop */}
+        <div className="bg-niners-gold/25 dark:bg-niners-night overflow-hidden rounded-lg shadow-[0px_4px_4px_0px_rgba(213,215,216,0.25)]">
           <div className="grid grid-cols-1 lg:grid-cols-[448px_448px]">
             {/* LEFT PANEL */}
             <div className="p-6 lg:p-8">
@@ -140,16 +137,15 @@ export default function MusicPlayer() {
               </div>
             </div>
 
-            {/* RIGHT PANEL */}
+             {/* RIGHT PANEL */}
             <div className="p-6 lg:border-l lg:border-niners-black/30 lg:p-8 dark:lg:border-niners-mist/20">
               <h2 className="mb-3 text-lg font-bold text-niners-black dark:text-niners-mist">
                 Playlist
               </h2>
 
-              {/* list container */}
-              <div className="rounded-md bg-niners-gold/30 p-4 dark:bg-niners-night">
-                {/* put scrolling HERE, don't hide X */}
-                <div className="max-h-[560px] overflow-y-auto">
+              <div className="rounded-md bg-niners-gold/30 p-6 dark:bg-niners-night">
+                {/* Mobile taller, desktop fixed like figma */}
+                <div className="max-h-[700px] overflow-y-auto lg:max-h-[560px]">
                   <Playlist
                     songs={playlist}
                     currentSongId={currentSongId}
@@ -161,7 +157,6 @@ export default function MusicPlayer() {
           </div>
         </div>
 
-        {/* Audio element (no controls shown) */}
         <AudioPlayer
           src={currentSong.song}
           isPlaying={isPlaying}
