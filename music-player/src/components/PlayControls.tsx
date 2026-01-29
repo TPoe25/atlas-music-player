@@ -1,5 +1,4 @@
 import { Shuffle, SkipBack, Play, Pause, SkipForward } from "lucide-react";
-
 import type { PlaybackSpeed } from "../types/music";
 
 type Props = {
@@ -27,51 +26,80 @@ export default function PlayControls({
   onForward,
   onShuffle,
 }: Props) {
+  const iconBtn =
+    "h-10 w-10 rounded-md flex items-center justify-center transition-colors " +
+    "hover:bg-niners-gold/20 dark:hover:bg-niners-graphite " +
+    "disabled:opacity-40 disabled:hover:bg-transparent";
+
   return (
-    <div className="flex w-96 items-center justify-between">
+    <div className="flex w-full items-center justify-between">
+      {/* Speed */}
       <button
         onClick={onSpeed}
-        className="text-niners-black/70 hover:text-niners-red transition-colors"
+        className="text-niners-black hover:bg-niners-gold/20 dark:text-niners-mist dark:hover:bg-niners-graphite h-10 rounded-md px-3 text-lg font-normal transition-colors"
         aria-label="Change Playback Speed"
+        type="button"
       >
-        <span className="text-lg font-medium">{speed}x</span>
+        {speed}x
       </button>
 
+      {/* Back */}
       <button
         onClick={onBack}
         disabled={!canBack}
-        className="text-niners-black/70 hover:text-niners-red transition-colors"
+        className={iconBtn}
         aria-label="Previous Song"
+        type="button"
       >
-        <SkipBack size={22} />
+        <SkipBack
+          size={22}
+          className="text-niners-black dark:text-niners-mist"
+        />
       </button>
 
+      {/* Play/Pause */}
       <button
         onClick={onPlayToggle}
-        className="border-niners-black bg-niners-cream hover:bg-niners-gold/20 rounded-md border-2 p-3 transition-colors"
+        className="border-niners-black hover:bg-niners-gold/20 dark:border-niners-mist dark:bg-niners-night dark:hover:bg-niners-graphite flex h-12 w-12 items-center justify-center rounded-md border-2 bg-niners-gold transition-colors"
         aria-label={isPlaying ? "Pause" : "Play"}
+        type="button"
       >
         {isPlaying ? (
-          <Pause size={24} className="text-niners-black" />
+          <Pause
+            size={22}
+            className="text-niners-black dark:text-niners-mist"
+          />
         ) : (
-          <Play size={24} className="text-niners-black" />
+          <Play size={22} className="text-niners-black dark:text-niners-mist" />
         )}
       </button>
 
+      {/* Forward */}
       <button
         onClick={onForward}
         disabled={!canForward}
-        className="text-niners-black/70 hover:text-niners-red transition-colors"
+        className={iconBtn}
         aria-label="Next Song"
+        type="button"
       >
-        <SkipForward size={22} />
+        <SkipForward
+          size={22}
+          className="text-niners-black dark:text-niners-mist"
+        />
       </button>
 
+      {/* Shuffle */}
       <button
         onClick={onShuffle}
-        className="text-niners-black/70 hover:text-niners-red transition-colors"
+        className={[
+          iconBtn,
+          isShuffle
+            ? "text-niners-red"
+            : "text-niners-black/70 dark:text-niners-mist/80",
+        ].join(" ")}
         aria-label="Shuffle"
         aria-pressed={isShuffle}
+        type="button"
       >
         <Shuffle size={18} />
       </button>

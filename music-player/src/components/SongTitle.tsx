@@ -1,14 +1,17 @@
-import { type Song } from "../types/music";
+type Props = {
+  title: string;
+  artist: string;
+};
 
-export default function SongTitle({ title, artist }: Song) {
-    return (
-        <div className="text-center">
-            <h2 className="text-lg font-semibold text-niners-red">
-                {title}
-            </h2>
-            <p className="text-sm text-niners-black/60">
-                {artist}
-            </p>
-        </div>
-    );
+export default function SongTitle({ title, artist }: Props) {
+  return (
+    <div className="w-full text-left">
+      <h2 className="text-2xl font-bold text-niners-red">
+        {title}
+      </h2>
+      <p className="mt-1 text-base text-niners-red/60">
+        {artist}
+      </p>
+    </div>
+  );
 }

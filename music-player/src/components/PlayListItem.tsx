@@ -6,38 +6,39 @@ type Props = {
   onSelect: (id: string) => void;
 };
 
-function formatHHMM(totalSeconds: number): string {
-  const hours = Math.floor(totalSeconds / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  return `${String(hours).padStart(2, "0")}:${String(minutes).padStart(2, "0")}`;
+function formatMMSS(totalSeconds: number): string {
+  const minutes = Math.floor(totalSeconds / 60);
+  const seconds = Math.floor(totalSeconds % 60);
+  return `${minutes}:${String(seconds).padStart(2, "0")}`;
 }
 
-export default function PlayListItem({
-  song,
-  selected = false,
-  onSelect,
-}: Props) {
+export default function PlayListItem({ song, selected = false, onSelect }: Props) {
   return (
     <button
       type="button"
       onClick={() => onSelect(song.id)}
       className={[
-        "w-full rounded-md px-4 py-2 text-left",
-        selected ? "bg-niners-gold/20 dark:bg-niners-red/20" : "bg-transparent",
+        "w-full rounded-md px-4 py-3 text-left transition-colors",
+        selected
+          ? "bg-niners-black/10 dark:bg-niners-mist/10"
+          : "hover:bg-niners-black/5 dark:hover:bg-niners-mist/5",
       ].join(" ")}
     >
-      <div className="flex items-start justify-between gap-6">
+      <div className="grid grid-cols-[minmax(0,1fr)_3.5rem] items-center gap-6">
+        {/* Left */}
         <div className="min-w-0">
-          <p className="text-niners-black dark:text-niners-mist truncate text-base font-semibold">
+          {/* if you truly want FULL title, remove line-clamp + allow wrap */}
+          <p className="text-base font-semibold text-niners-black dark:text-niners-mist">
             {song.title}
           </p>
-          <p className="text-niners-black/60 dark:text-niners-mist/70 truncate text-sm font-medium">
+          <p className="text-sm font-medium text-niners-black/60 dark:text-niners-mist/70">
             {song.artist}
           </p>
         </div>
 
-        <span className="text-niners-black/50 dark:text-niners-mist/60 shrink-0 text-sm font-medium">
-          {formatHHMM(song.duration)}
+        {/* Right time */}
+        <span className="whitespace-nowrap text-right text-sm font-medium tabular-nums text-niners-black/50 dark:text-niners-mist/60">
+          {formatMMSS(song.duration)}
         </span>
       </div>
     </button>

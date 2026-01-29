@@ -66,7 +66,7 @@ export default function MusicPlayer() {
 
   const currentIndex = useMemo(
     () => playlist.findIndex((s) => s.id === currentSongId),
-    [playlist, currentSongId]
+    [playlist, currentSongId],
   );
 
   const canBack = currentIndex > 0;
@@ -104,38 +104,72 @@ export default function MusicPlayer() {
   if (!currentSong) return null;
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex gap-6">
-        <CoverArt coverUrl={currentSong.cover} />
-        <div className="flex flex-col gap-4">
-          <SongTitle title={currentSong.title} artist={currentSong.artist} />
+    <div className="w-full px-4 py-8">
+      {/* Mobile: ~456px. Desktop: ~896px */}
+      <div className="mx-auto w-full max-w-[456px] lg:max-w-[896px]">
+        {/* Outer card */}
+        <div className="bg-niners-gold/25 dark:bg-niners-night rounded-sm">
+          {/* Two fixed columns on desktop */}
+          <div className="grid grid-cols-1 lg:grid-cols-[448px_448px]">
+            {/* LEFT PANEL */}
+            <div className="p-6 lg:p-8">
+              <div className="flex flex-col items-center gap-6">
+                <CoverArt coverUrl={currentSong.cover} />
 
-          <PlayControls
-            speed={speed}
-            isPlaying={isPlaying}
-            isShuffle={isShuffle}
-            canBack={canBack}
-            canForward={canForward}
-            onSpeed={cycleSpeed}
-            onPlayToggle={() => setIsPlaying((p) => !p)}
-            onBack={prevSong}
-            onForward={nextSong}
-            onShuffle={() => setIsShuffle((v) => !v)}
-          />
+                <SongTitle
+                  title={currentSong.title}
+                  artist={currentSong.artist}
+                />
 
-          <VolumeControls volume={volume} onChange={setVolume} />
+                <PlayControls
+                  speed={speed}
+                  isPlaying={isPlaying}
+                  isShuffle={isShuffle}
+                  canBack={canBack}
+                  canForward={canForward}
+                  onSpeed={cycleSpeed}
+                  onPlayToggle={() => setIsPlaying((p) => !p)}
+                  onBack={prevSong}
+                  onForward={nextSong}
+                  onShuffle={() => setIsShuffle((v) => !v)}
+                />
+
+                <div className="w-full">
+                  <VolumeControls volume={volume} onChange={setVolume} />
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT PANEL */}
+            <div className="p-6 lg:border-l lg:border-niners-black/30 lg:p-8 dark:lg:border-niners-mist/20">
+              <h2 className="mb-3 text-lg font-bold text-niners-black dark:text-niners-mist">
+                Playlist
+              </h2>
+
+              {/* list container */}
+              <div className="rounded-md bg-niners-gold/30 p-4 dark:bg-niners-night">
+                {/* put scrolling HERE, don't hide X */}
+                <div className="max-h-[560px] overflow-y-auto">
+                  <Playlist
+                    songs={playlist}
+                    currentSongId={currentSongId}
+                    onSelect={setCurrentSongId}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        {/* Audio element (no controls shown) */}
+        <AudioPlayer
+          src={currentSong.song}
+          isPlaying={isPlaying}
+          volume={volume}
+          speed={speed}
+          onEnded={nextSong}
+        />
       </div>
-
-      <Playlist songs={playlist} currentSongId={currentSongId} onSelect={setCurrentSongId} />
-
-      <AudioPlayer
-        src={currentSong.song}
-        isPlaying={isPlaying}
-        volume={volume}
-        speed={speed}
-        onEnded={nextSong}
-      />
     </div>
   );
 }

@@ -7,7 +7,7 @@ export default function VolumeControls({ volume, onChange }: Props) {
   return (
     <input
       type="range"
-      className="accent-niners-red/70 w-full"
+      className="bg-niners-red/50 accent-niners-red/70 flex items-center justify-between w-full"
       min={0}
       max={100}
       value={Math.round(volume * 100)}
