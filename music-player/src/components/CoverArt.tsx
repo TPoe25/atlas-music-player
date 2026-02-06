@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render } from "@testing-library/react";
-import { CoverArt } from "music-plater/src/components/CoverArt";
+import CoverArt from "../../music-player/src/components/CoverArt";
 
 describe("CoverArt snapshot tests", () => {
   it("renders with a valid cover image", () => {
