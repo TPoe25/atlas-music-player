@@ -1,13 +1,29 @@
-import placeholder from "../assets/placeholder.svg";
+import { describe, it, expect } from "vitest";
+import { render } from "@testing-library/react";
+import { CoverArt } from "music-plater/src/components/CoverArt";
 
-type Props = { coverUrl?: string };
+describe("CoverArt snapshot tests", () => {
+  it("renders with a valid cover image", () => {
+    const { container } = render(
+      <CoverArt coverUrl="/covers/test-cover.jpg" />,
+    );
 
-export default function CoverArt({ coverUrl }: Props) {
-  return (
-    <img
-      src={coverUrl && coverUrl.trim() ? coverUrl : placeholder}
-      alt="Cover Art"
-      className="h-96 w-96 rounded-md object-cover"
-    />
-  );
-}
+    expect(container).toMatchSnapshot();
+  });
+
+  it("renders with a different cover image", () => {
+    const { container } = render(
+      <CoverArt coverUrl="/covers/another-cover.png" />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it("renders with a different cover image", () => {
+    const { container } = render(
+      <CoverArt coverUrl="/covers/another-cover.png" />,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+});
