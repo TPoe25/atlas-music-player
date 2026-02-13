@@ -1,0 +1,40 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`VolumeControl snapshots > renders full volume 1`] = `
+<div>
+  <input
+    aria-label="Volume Control"
+    class="bg-niners-red/50 accent-niners-red/70 flex items-center justify-between w-full"
+    max="100"
+    min="0"
+    type="range"
+    value="100"
+  />
+</div>
+`;
+
+exports[`VolumeControl snapshots > renders half volume 1`] = `
+<div>
+  <input
+    aria-label="Volume Control"
+    class="bg-niners-red/50 accent-niners-red/70 flex items-center justify-between w-full"
+    max="100"
+    min="0"
+    type="range"
+    value="50"
+  />
+</div>
+`;
+
+exports[`VolumeControl snapshots > renders muted 1`] = `
+<div>
+  <input
+    aria-label="Volume Control"
+    class="bg-niners-red/50 accent-niners-red/70 flex items-center justify-between w-full"
+    max="100"
+    min="0"
+    type="range"
+    value="0"
+  />
+</div>
+`;

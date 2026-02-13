@@ -1,29 +1,28 @@
-import { describe, it, expect } from "vitest";
-import { render } from "@testing-library/react";
-import CoverArt from "../../music-player/src/components/CoverArt";
+import { useState } from "react";
 
-describe("CoverArt snapshot tests", () => {
-  it("renders with a valid cover image", () => {
-    const { container } = render(
-      <CoverArt coverUrl="/covers/test-cover.jpg" />,
-    );
+type Props = {
+  coverUrl: string | null;
+};
 
-    expect(container).toMatchSnapshot();
-  });
+export default function CoverArt({ coverUrl }: Props) {
+  const [hasImageError, setHasImageError] = useState(false);
+  const showImage = Boolean(coverUrl) && !hasImageError;
 
-  it("renders with a different cover image", () => {
-    const { container } = render(
-      <CoverArt coverUrl="/covers/another-cover.png" />,
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
-  it("renders with a different cover image", () => {
-    const { container } = render(
-      <CoverArt coverUrl="/covers/another-cover.png" />,
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-});
+  return (
+    <div className="bg-niners-black/10 dark:bg-niners-mist/10 aspect-square w-full max-w-70 overflow-hidden rounded-2xl">
+      {showImage ? (
+        <img
+          src={coverUrl!}
+          alt="Album cover art"
+          className="h-full w-full object-cover"
+          loading="lazy"
+          onError={() => setHasImageError(true)}
+        />
+      ) : (
+        <div className="text-niners-black/60 dark:text-niners-mist/60 flex h-full items-center justify-center text-sm font-medium">
+          No cover art
+        </div>
+      )}
+    </div>
+  );
+}

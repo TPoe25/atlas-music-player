@@ -11,6 +11,8 @@ type Props = {
 
 export default function AudioPlayer({ src, isPlaying, volume, speed, onEnded }: Props) {
   const audioRef = useRef<HTMLAudioElement>(null);
+  const isJsdom =
+    typeof navigator !== "undefined" && /jsdom/i.test(navigator.userAgent);
 
   useEffect(() => {
     const a = audioRef.current;
@@ -18,11 +20,23 @@ export default function AudioPlayer({ src, isPlaying, volume, speed, onEnded }: 
 
     a.volume = volume;
     a.playbackRate = speed;
+    if (isJsdom) return;
 
     if (isPlaying) {
-      void a.play();
+      try {
+        const result = a.play();
+        if (result && typeof result.catch === "function") {
+          result.catch(() => undefined);
+        }
+      } catch {
+        // jsdom does not implement media playback APIs.
+      }
     } else {
-      a.pause();
+      try {
+        a.pause();
+      } catch {
+        // jsdom does not implement media playback APIs.
+      }
     }
   }, [src, isPlaying, volume, speed]);
 

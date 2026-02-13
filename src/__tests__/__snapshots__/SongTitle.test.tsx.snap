@@ -1,0 +1,39 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SongTitle snapshots > renders long values 1`] = `
+<div>
+  <div
+    class="w-full text-left"
+  >
+    <h2
+      class="text-2xl font-bold text-niners-red"
+    >
+      When the Sun Breaks Through the Rain and We Keep Driving
+    </h2>
+    <p
+      class="mt-1 text-base text-niners-red/60"
+    >
+      The Midnight Travelers Collective
+    </p>
+  </div>
+</div>
+`;
+
+exports[`SongTitle snapshots > renders title and artist 1`] = `
+<div>
+  <div
+    class="w-full text-left"
+  >
+    <h2
+      class="text-2xl font-bold text-niners-red"
+    >
+      Electric Dawn
+    </h2>
+    <p
+      class="mt-1 text-base text-niners-red/60"
+    >
+      Ari Vale
+    </p>
+  </div>
+</div>
+`;

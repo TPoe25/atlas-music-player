@@ -1,0 +1,44 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`CoverArt snapshots > renders fallback after image error 1`] = `
+<div>
+  <div
+    class="bg-niners-black/10 dark:bg-niners-mist/10 aspect-square w-full max-w-70 overflow-hidden rounded-2xl"
+  >
+    <div
+      class="text-niners-black/60 dark:text-niners-mist/60 flex h-full items-center justify-center text-sm font-medium"
+    >
+      No cover art
+    </div>
+  </div>
+</div>
+`;
+
+exports[`CoverArt snapshots > renders with cover image 1`] = `
+<div>
+  <div
+    class="bg-niners-black/10 dark:bg-niners-mist/10 aspect-square w-full max-w-70 overflow-hidden rounded-2xl"
+  >
+    <img
+      alt="Album cover art"
+      class="h-full w-full object-cover"
+      loading="lazy"
+      src="https://example.com/cover.jpg"
+    />
+  </div>
+</div>
+`;
+
+exports[`CoverArt snapshots > renders without cover image 1`] = `
+<div>
+  <div
+    class="bg-niners-black/10 dark:bg-niners-mist/10 aspect-square w-full max-w-70 overflow-hidden rounded-2xl"
+  >
+    <div
+      class="text-niners-black/60 dark:text-niners-mist/60 flex h-full items-center justify-center text-sm font-medium"
+    >
+      No cover art
+    </div>
+  </div>
+</div>
+`;
